@@ -5,6 +5,7 @@ class Visita {
     public $importe;
     public $pagada;
 
+
     public function getPaciente() {
         return $this->paciente;
     }
@@ -33,17 +34,20 @@ class Visita {
 	{
 		return $this->pagada == 'True' ? 'img05.gif' : 'img06.gif';
 	}
-
+    
+    public function getPagada() {
+        return $this->pagada;
+    }
     public function setPagada($pagada) {
             $this->pagada = $pagada;
        
     }
     
 
-    public function __construct($paciente, $fecha, $importe, $pagada) {
+    public function __construct($paciente, $importe, $fecha , $pagada) {
         $this->paciente = $paciente;
-        $this->fecha = $fecha;
         $this->importe = $importe;
+        $this->fecha = $fecha;
         $this->pagada = $pagada;
     }
 

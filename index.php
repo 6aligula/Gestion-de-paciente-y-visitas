@@ -3,7 +3,7 @@
 require_once "Autoloader.php";
 //require_once "Data.php"; 
 
-$objetoVisitas = new GestorVisitas("data_1.csv");
+$objetoVisitas = new GestorVisitas();
 $objetoVisitas->loadData("data_1.csv");
 ?>
 
@@ -90,8 +90,8 @@ $objetoVisitas->loadData("data_1.csv");
 		<thead>
 			<tr>
 				<th>Paciente</th>
-				<th>Importe</th>
 				<th>Fecha</th>
+				<th>Importe</th>
 				<th>Pagado</th>
                 <th>Actions</th>
 			</tr>
