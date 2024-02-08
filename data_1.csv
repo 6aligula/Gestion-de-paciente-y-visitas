@@ -1,4 +1,4 @@
-Patient38,81,2016-05-04,False
+Patient4,8100,2016-05-04,
 Patient10,323,2016-12-03,True
 Patient27,150,2015-10-28,True
 Patient44,356,2015-01-02,False
@@ -45,7 +45,7 @@ Patient4,150,2016-07-25,True
 Patient4,395,2013-08-06,True
 Patient25,310,2018-04-14,False
 Patient45,228,2018-09-29,True
-Patient3,379,2012-01-29,True
+Patient3,2016-05-04,81,
 Patient45,126,2013-07-23,True
 Patient7,165,2021-11-21,True
 Patient35,357,2023-08-30,False
@@ -54,7 +54,7 @@ Patient19,75,2022-04-28,False
 Patient25,461,2014-11-23,False
 Patient33,87,2011-07-02,True
 Patient24,311,2023-02-16,False
-Patient3,111,2022-11-18,True
+Patient3,2016-05-04,81,
 Patient2,334,2012-01-30,True
 Patient30,136,2013-01-30,False
 Patient21,152,2014-02-12,True
@@ -87,6 +87,6 @@ Patient15,393,2019-09-02,False
 Patient20,259,2012-05-29,False
 Patient31,194,2016-11-03,False
 Patient21,160,2022-04-13,False
-Patient38,341,2023-11-13,True
+Patient4,8100,2016-05-04,
 Patient28,236,2010-04-30,True
 Patient2,91,2010-01-28,True

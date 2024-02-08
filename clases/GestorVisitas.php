@@ -51,7 +51,7 @@ class GestorVisitas
             // Añadir la columna de acciones si es necesario
             $html .= '<td>';
             $html .= '<a href="Delete_visita.php?paciente=' . $visita->getPaciente() . '"><img src="del_icon.png" alt="Eliminar" width="30" height="30"></a>';
-            $html .= '<a href="edit_visita.php?paciente=' . $visita->getPaciente() . '"><img src="edit_icon.png" alt="Editar" width="30" height="30"></a>';
+            $html .= '<a href="edit.php?paciente=' . $visita->getPaciente() . '"><img src="edit_icon.png" alt="Editar" width="30" height="30"></a>';
             $html .= '</td>';
 
             $html .= '</tr>';
@@ -69,7 +69,29 @@ class GestorVisitas
         }
         $this->persist(); // Guardar los cambios después de eliminar
     }
+
+    public function getPacientebyName($id){
+		foreach ($this->visitas as $visita) {
+			if ($visita->getPaciente() == $id) {
+				return $visita;
+			}
+		}
+		return null; // Retornar null si el cliente no se encuentra
+	}
     
+	public function update($datos) {
+        //var_dump($datos);
+        foreach ($this->visitas as $visit) {
+            if ($visit->getPaciente() == $datos["id_original"]) {
+                $visit->setPaciente($datos["paciente"]);
+                $visit->setFecha($datos["fecha"]);
+                $visit->setImporte($datos["importe"]);
+                $visit->setPagada($datos["pagada"]);
+                // Asegúrate de actualizar todos los campos necesarios
+            }
+        }
+        $this->persist(); // Guardar los cambios en el archivo CSV
+    }
 
     // public function mostrarVisitas() {
     //     foreach ($this->visitas as $visita) {
