@@ -43,12 +43,11 @@ class GestorPacientes {
         $this->guardarPacientes(); // Guardar cambios
     }
 
-    public function eliminarPacientePorId($id) {
+    public function DeleteById($id) {
         foreach ($this->pacientes as $key => $paciente) {
             if ($paciente->getId() == $id) {
                 unset($this->pacientes[$key]);
-                $this->pacientes = array_values($this->pacientes); // Reindexar el array
-                break;
+
             }
         }
         $this->guardarPacientes(); // Guardar cambios

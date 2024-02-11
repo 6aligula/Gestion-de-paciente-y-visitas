@@ -122,6 +122,10 @@ $objetoPacientes->cargarPacientes("pacientes.csv");
 	<div>
 		<a href="createPatient.php" class="btn btn-primary">Añadir paciente</a>
 	</div>
+	<br>
+	<div>
+		<a href="index.php" class="btn btn-primary">Inicio</a>
+	</div>
 
 
 </body>
