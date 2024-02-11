@@ -30,11 +30,6 @@ class Visita {
         $this->importe = $importe;
     }
 
-    public function getActiveImage()
-	{
-		return $this->pagada == 'True' ? 'img05.gif' : 'img06.gif';
-	}
-    
     public function getPagada() {
         return $this->pagada;
     }
@@ -42,6 +37,11 @@ class Visita {
             $this->pagada = $pagada;
        
     }
+    public function getActiveImage()
+	{
+		return $this->pagada == 'True' ? 'img05.gif' : 'img06.gif';
+	}
+    
     
 
     public function __construct($paciente, $importe, $fecha , $pagada) {
@@ -52,7 +52,7 @@ class Visita {
     }
 
     public function toString() {
-        return $this->paciente . "," . $this->fecha . "," . $this->importe . "," . ($this->pagada ? "Sí" : "No");
+        return $this->paciente . "," . $this->fecha . "," . $this->importe . "," . ($this->pagada ? "True" : "False");
     }
 
 }

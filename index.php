@@ -90,8 +90,8 @@ $objetoVisitas->loadData("data_1.csv");
 		<thead>
 			<tr>
 				<th>Paciente</th>
-				<th>Fecha</th>
 				<th>Importe</th>
+				<th>Fecha</th>
 				<th>Pagado</th>
                 <th>Actions</th>
 			</tr>

@@ -9,7 +9,7 @@ class GestorVisitas
         // Opcionalmente, puede escribir los encabezados aquí
         // fputcsv($file, ["Paciente", "Fecha", "Importe", "Pagada"]);
         foreach ($this->visitas as $visita) {
-            fputcsv($file, [$visita->getPaciente(), $visita->getFecha(), $visita->getImporte(), $visita->getPagada()]);
+            fputcsv($file, [$visita->getPaciente(), $visita->getImporte(), $visita->getFecha(), $visita->getPagada()]);
         }
         fclose($file);
     }
@@ -44,8 +44,8 @@ class GestorVisitas
         foreach ($this->visitas as $visita) {
             $html .= '<tr>';
             $html .= '<td>' . htmlspecialchars($visita->paciente) . '</td>';
-            $html .= '<td>' . htmlspecialchars($visita->fecha) . '</td>';
             $html .= '<td>' . number_format($visita->importe, 2, ',', '.') . ' €</td>';
+            $html .= '<td>' . htmlspecialchars($visita->fecha) . '</td>';
             $html .= '<td><img src="' . $visita->getActiveImage() . '" alt="' . ($visita->pagada == 'True' ? 'Active' : 'Inactive') . '"></td>';
 
             // Añadir la columna de acciones si es necesario
@@ -84,8 +84,8 @@ class GestorVisitas
         foreach ($this->visitas as $visit) {
             if ($visit->getPaciente() == $datos["id_original"]) {
                 $visit->setPaciente($datos["paciente"]);
-                $visit->setFecha($datos["fecha"]);
                 $visit->setImporte($datos["importe"]);
+                $visit->setFecha($datos["fecha"]);
                 $visit->setPagada($datos["pagada"]);
                 // Asegúrate de actualizar todos los campos necesarios
             }
