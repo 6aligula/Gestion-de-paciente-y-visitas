@@ -93,9 +93,10 @@ class GestorVisitas
         $this->persist(); // Guardar los cambios en el archivo CSV
     }
 
-    // public function mostrarVisitas() {
-    //     foreach ($this->visitas as $visita) {
-    //         echo $visita->toString() . "<br>";
-    //     }
-    // }
+	public function insert($datos) {
+		// Crear un nuevo ID único para el nuevo cliente, esto es opcional y depende de tu implementación
+		$newVisit = new Visita($datos["paciente"], $datos["importe"], $datos["fecha"], $datos["pagada"]);
+		array_push($this->visitas, $newVisit);
+		$this->persist(); // Guardar los cambios en el archivo CSV
+	}
 }

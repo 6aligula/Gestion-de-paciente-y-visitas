@@ -33,7 +33,7 @@ if (count($_POST) > 0) {
     </div>
     <div>
         <label for="fecha">Fecha:</label>
-        <input type="text" id="fecha" name="fecha" value="<?= $paciente->getFecha(); ?>">
+        <input type="date" id="fecha" name="fecha" value="<?= $paciente->getFecha(); ?>">
     </div>
     <div>
         <label for="pagado">Pagado:</label>
