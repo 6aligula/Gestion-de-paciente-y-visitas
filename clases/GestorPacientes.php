@@ -2,29 +2,36 @@
 class GestorPacientes {
     private $pacientes = [];
 
-    public function cargarPacientes($archivo) {
-        if (!file_exists($archivo) || !is_readable($archivo)) {
-            return false; // Archivo no existe o no se puede leer
-        }
-
-        $file = fopen($archivo, "r");
-        while (($line = fgetcsv($file)) !== false) {
-            $this->pacientes[] = new Paciente(...$line);
-        }
-        fclose($file);
-    }
-
-    public function guardarPacientes($archivo) {
-        $file = fopen($archivo, "w");
+    // persist data
+    public function guardarPacientes() {
+        $file = fopen("pacientes.csv", "w");
         foreach ($this->pacientes as $paciente) {
             fputcsv($file, [$paciente->getId(), $paciente->getNombre(), $paciente->getDireccion()]);
         }
         fclose($file);
     }
 
-    public function agregarPaciente($paciente) {
-        $this->pacientes[] = $paciente;
-        $this->guardarPacientes('pacientes.csv'); // Guardar cambios
+    // load data
+    public function cargarPacientes($archivo) {
+        if (!file_exists($archivo) || !is_readable($archivo)) {
+            return false; // Archivo no existe o no se puede leer
+        }
+
+        $file = fopen($archivo, "r");
+        while (($element = fgetcsv($file)) !== false) {
+            array_push(
+                $this->pacientes,
+                new Paciente(...$element)
+            );
+        }
+        fclose($file);
+    }
+
+    public function agregarPaciente($datosPaciente) {
+        // Crear un nuevo objeto Paciente con los datos recibidos
+        $nuevoPaciente = new Paciente($datosPaciente['id'], $datosPaciente['nombre'], $datosPaciente['direccion']);
+        array_push($this->pacientes, $nuevoPaciente);
+        $this->guardarPacientes(); // Guardar cambios
     }
 
     public function eliminarPacientePorId($id) {
@@ -35,7 +42,7 @@ class GestorPacientes {
                 break;
             }
         }
-        $this->guardarPacientes('pacientes.csv'); // Guardar cambios
+        $this->guardarPacientes(); // Guardar cambios
     }
 
     public function modificarPaciente($id, $nuevoNombre, $nuevaDireccion) {
@@ -46,7 +53,7 @@ class GestorPacientes {
                 break;
             }
         }
-        $this->guardarPacientes('pacientes.csv'); // Guardar cambios
+        $this->guardarPacientes(); // Guardar cambios
     }
 
     public function visualizarPacientes() {
