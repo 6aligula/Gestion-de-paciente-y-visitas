@@ -3,8 +3,8 @@
 require_once "Autoloader.php";
 //require_once "Data.php"; 
 
-$objetoVisitas = new GestorVisitas();
-$objetoVisitas->loadData("data_1.csv");
+$objetoPacientes = new GestorPacientes();
+$objetoPacientes->cargarPacientes("pacientes.csv");
 ?>
 
 <!DOCTYPE html>
@@ -102,10 +102,9 @@ $objetoVisitas->loadData("data_1.csv");
 	<table class="redTable">
 		<thead>
 			<tr>
-				<th>Paciente</th>
-				<th>Importe</th>
-				<th>Fecha</th>
-				<th>Pagado</th>
+				<th>ID Paciente</th>
+				<th>Nombre</th>
+				<th>Dirección</th>
 				<th>Actions</th>
 			</tr>
 		</thead>
@@ -116,16 +115,12 @@ $objetoVisitas->loadData("data_1.csv");
 			</tr>
 		</tfoot>
 		<tbody>
-			<?= $objetoVisitas->drawList() ?>
+			<?= $objetoPacientes->visualizarPacientes() ?>
 		</tbody>
 	</table>
 	<br>
 	<div>
-		<a href="create.php" class="btn btn-primary">Añadir Empresa</a>
-	</div>
-	<br>
-	<div>
-		<a href="ListaPacientes.php" class="btn btn-primary">Listado de pacientes</a>
+		<a href="createPatient.php" class="btn btn-primary">Añadir paciente</a>
 	</div>
 
 
