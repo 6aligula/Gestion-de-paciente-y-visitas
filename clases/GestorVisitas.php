@@ -103,4 +103,27 @@ class GestorVisitas
 		array_push($this->visitas, $newVisit);
 		$this->persist(); // Guardar los cambios en el archivo CSV
 	}
+
+    public function drawListByPacienteId($pacienteId) {
+        $html = '';
+    
+        foreach ($this->visitas as $visita) {
+            if ($visita->getPaciente() == $pacienteId) {
+                // Clases adicionales según el importe y si está pagada
+                $classPagada = $visita->getPagada() == 'True' ? 'visita-pagada' : 'visita-no-pagada';
+                $classImporte = $visita->getImporte() > 250 ? 'importe-alto' : '';
+    
+                $html .= "<tr class='$classPagada $classImporte'>";
+                $html .= '<td>' . htmlspecialchars($visita->getPaciente()) . '</td>';
+                $html .= '<td>' . number_format($visita->getImporte(), 2, ',', '.') . ' €</td>';
+                $html .= '<td>' . htmlspecialchars($visita->getFecha()) . '</td>';
+                $html .= '<td>' . ($visita->getPagada() == 'True' ? 'Sí' : 'No') . '</td>';
+                $html .= '</tr>';
+            }
+        }
+    
+        $html .= '</table>';
+        return $html;
+    }
+    
 }

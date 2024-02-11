@@ -71,7 +71,7 @@ class GestorPacientes {
         foreach ($this->pacientes as $paciente) {
             
             $html .= "<tr>";
-            $html .= '<td>' . htmlspecialchars($paciente->getId()) . '</td>';
+            $html .= '<td><a href="verVisitasPorPaciente.php?pacienteId=' . htmlspecialchars($paciente->getId()) . '">' . htmlspecialchars($paciente->getId()) . '</a></td>';
             $html .= '<td>' . htmlspecialchars($paciente->getNombre()) . '</td>';
             $html .= '<td>' . htmlspecialchars($paciente->getDireccion()) . '</td>';
             // Añadir la columna de acciones si es necesario

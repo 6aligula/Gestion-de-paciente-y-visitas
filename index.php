@@ -1,10 +1,12 @@
 <?php
 
 require_once "Autoloader.php";
-//require_once "Data.php"; 
 
 $objetoVisitas = new GestorVisitas();
 $objetoVisitas->loadData("data_1.csv");
+
+$objetoPacientes = new GestorPacientes();
+$objetoPacientes->cargarPacientes("pacientes.csv");
 ?>
 
 <!DOCTYPE html>
@@ -121,7 +123,7 @@ $objetoVisitas->loadData("data_1.csv");
 	</table>
 	<br>
 	<div>
-		<a href="create.php" class="btn btn-primary">Añadir Empresa</a>
+		<a href="create.php" class="btn btn-primary">Añadir Visita</a>
 	</div>
 	<br>
 	<div>
