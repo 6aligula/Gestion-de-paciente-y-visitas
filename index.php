@@ -35,10 +35,6 @@ $objetoVisitas->loadData("data_1.csv");
 			font-size: 13px;
 		}
 
-		table.redTable tr:nth-child(even) {
-			background: #F5C8BF;
-		}
-
 		table.redTable thead {
 			background: #A40808;
 		}
@@ -82,6 +78,23 @@ $objetoVisitas->loadData("data_1.csv");
 			font-weight: bolder;
 			color: blue;
 		}
+
+		.visita-pagada {
+			background-color: lightgreen;
+			/* Verde claro para visitas pagadas */
+		}
+
+		.visita-no-pagada {
+			background-color: orange;
+			/* Rojo claro para visitas no pagadas */
+		}
+
+		.importe-alto {
+			font-weight: bold;
+			/* Negrita para importes altos */
+			color: #004085;
+			/* Cambiar el color del texto si prefieres */
+		}
 	</style>
 </head>
 
@@ -93,7 +106,7 @@ $objetoVisitas->loadData("data_1.csv");
 				<th>Importe</th>
 				<th>Fecha</th>
 				<th>Pagado</th>
-                <th>Actions</th>
+				<th>Actions</th>
 			</tr>
 		</thead>
 		<tfoot>
@@ -107,10 +120,10 @@ $objetoVisitas->loadData("data_1.csv");
 		</tbody>
 	</table>
 	<br>
-<div>
-<a href="create.php" class="btn btn-primary">Añadir Empresa</a>
-</div>
-	
+	<div>
+		<a href="create.php" class="btn btn-primary">Añadir Empresa</a>
+	</div>
+
 
 </body>
 

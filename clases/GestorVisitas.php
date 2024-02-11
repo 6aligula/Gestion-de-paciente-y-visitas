@@ -42,7 +42,11 @@ class GestorVisitas
         $html = '';
 
         foreach ($this->visitas as $visita) {
-            $html .= '<tr>';
+            // Clases adicionales según el importe y si está pagada
+            $classPagada = $visita->getPagada() == 'True' ? 'visita-pagada' : 'visita-no-pagada';
+            $classImporte = $visita->getImporte() > 250 ? 'importe-alto' : '';
+            
+            $html .= "<tr class='$classPagada $classImporte'>";
             $html .= '<td>' . htmlspecialchars($visita->paciente) . '</td>';
             $html .= '<td>' . number_format($visita->importe, 2, ',', '.') . ' €</td>';
             $html .= '<td>' . htmlspecialchars($visita->fecha) . '</td>';
