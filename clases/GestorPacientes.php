@@ -27,6 +27,15 @@ class GestorPacientes {
         fclose($file);
     }
 
+    public function getPacientebyId($id){
+		foreach ($this->pacientes as $paciente) {
+			if ($paciente->getId() == $id) {
+				return $paciente;
+			}
+		}
+		return null; // Retornar null si el cliente no se encuentra
+	}
+
     public function agregarPaciente($datosPaciente) {
         // Crear un nuevo objeto Paciente con los datos recibidos
         $nuevoPaciente = new Paciente($datosPaciente['id'], $datosPaciente['nombre'], $datosPaciente['direccion']);
@@ -45,15 +54,16 @@ class GestorPacientes {
         $this->guardarPacientes(); // Guardar cambios
     }
 
-    public function modificarPaciente($id, $nuevoNombre, $nuevaDireccion) {
-        foreach ($this->pacientes as $paciente) {
-            if ($paciente->getId() == $id) {
-                $paciente->setNombre($nuevoNombre);
-                $paciente->setDireccion($nuevaDireccion);
-                break;
+	public function update($datos) {
+        //var_dump($datos);
+        foreach ($this->pacientes as $pacient) {
+            if ($pacient->getId() == $datos["id_original"]) {
+                $pacient->setId($datos["id_paciente"]);
+                $pacient->setNombre($datos["nombre"]);
+                $pacient->setDireccion($datos["direccion"]);
             }
         }
-        $this->guardarPacientes(); // Guardar cambios
+        $this->guardarPacientes(); // Guardar los cambios en el archivo CSV
     }
 
     public function visualizarPacientes() {
